@@ -9,10 +9,7 @@ import 'package:udb_association/utils/constants/urls.dart';
 class NewsDetailScreen extends ConsumerStatefulWidget {
   final NewsModel news;
 
-  const NewsDetailScreen({
-    super.key,
-    required this.news,
-  });
+  const NewsDetailScreen({super.key, required this.news});
 
   @override
   ConsumerState<NewsDetailScreen> createState() => _NewsDetailScreenState();
@@ -24,14 +21,19 @@ class _NewsDetailScreenState extends ConsumerState<NewsDetailScreen> {
     final l10n = context.l10n;
     final localeTag = l10n.locale.toLanguageTag();
     final imageUrl = ApiUrls.getMediaUrl(widget.news.image);
-    
+
     // Format publish date
-    final publishDate = DateFormat('d MMMM yyyy', localeTag).format(widget.news.publishDate);
-    
+    final publishDate = DateFormat(
+      'd MM MYYY',
+      localeTag,
+    ).format(widget.news.publishDate);
+
     // Publisher name
-    final publisherName = widget.news.user.name.isNotEmpty 
-        ? widget.news.user.name 
-        : (widget.news.user.email.isNotEmpty ? widget.news.user.email.split('@').first : 'User');
+    final publisherName = widget.news.user.name.isNotEmpty
+        ? widget.news.user.name
+        : (widget.news.user.email.isNotEmpty
+              ? widget.news.user.email.split('@').first
+              : 'User');
 
     return Scaffold(
       backgroundColor: const Color(0xFFF7F7F7),
@@ -105,7 +107,9 @@ class _NewsDetailScreenState extends ConsumerState<NewsDetailScreen> {
                     width: double.infinity,
                     padding: const EdgeInsets.all(20.0),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFE8F5E9), // Light mint green background
+                      color: const Color(
+                        0xFFE8F5E9,
+                      ), // Light mint green background
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: [
                         BoxShadow(
@@ -173,4 +177,3 @@ class _NewsDetailScreenState extends ConsumerState<NewsDetailScreen> {
     );
   }
 }
-

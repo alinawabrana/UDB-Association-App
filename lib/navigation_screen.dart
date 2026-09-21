@@ -657,8 +657,8 @@ class _FooterNavCompactTile extends StatelessWidget {
         children: [
           AnimatedContainer(
             duration: const Duration(milliseconds: 200),
-            width: 44,
-            height: 44,
+            width: 42,
+            height: 42,
             decoration: BoxDecoration(
               color: circleFill,
               shape: BoxShape.circle,
